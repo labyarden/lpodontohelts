@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdontoHelts - Clínica Odontológica do Dr. João Helts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0F2D5E;
+            --primary-light: #1D4ED8;
+            --accent: #10B981;
+            --text-dark: #1F2937;
+            --text-light: #F3F4F6;
+            --border: #E5E7EB;
+            --bg-light: #F9FAFB;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: white;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: transparent;
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        nav.scrolled {
+            background: var(--primary);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav.scrolled .nav-links a {
+            color: white;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a3a6b 100%);
+            color: white;
+            padding: 120px 0 80px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero-highlight {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Section */
+        section {
+            padding: 80px 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        /* Sobre */
+        .about {
+            background: var(--bg-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .cro-badge {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--accent);
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cro-badge strong {
+            color: var(--primary);
+        }
+
+        /* Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Depoimentos */
+        .testimonials {
+            background: var(--bg-light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-text {
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .testimonial-rating {
+            color: #FDB022;
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQ */
+        .faq {
+            background: white;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: #666;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Contato */
+        .contact {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a3a6b 100%);
+            color: white;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .cro-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: pulse 2s infinite;
+            z-index: 999;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content,
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <img src="https://cdn.jsdelivr.net/gh/manus-ai/cdn@main/odontohelts-logo.png" alt="OdontoHelts" class="logo">
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="https://wa.me/5511987654321" class="cta-button">📞 Agendar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <h1>Recupere sua <span class="hero-highlight">autoestima</span> com tratamentos ágeis e seguros</h1>
+                    <p>Sem medo, sem burocracia e sem termos técnicos difíceis. Você sai com um plano claro e a segurança de estar no lugar certo.</p>
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/5511987654321" class="cta-button">📞 Agendar minha avaliação agora</a>
+                        <a href="#servicos" class="cta-button" style="background: transparent; border: 2px solid white; color: white;">Ver serviços →</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Pacientes Atendidos</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Anos de Experiência</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Satisfação</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1631217314830-4e6a9f0d3ccf?w=500&h=600&fit=crop" alt="Dr. João Helts">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <h2>Conheça o Dr. João Helts</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e88e6ff1fcc2?w=500&h=600&fit=crop" alt="Consultório">
+                </div>
+                <div class="about-text">
+                    <h3>Especialista em Implantes e Estética Dental</h3>
+                    <p>Com mais de 10 anos de experiência, o Dr. João Helts é especialista em implantes dentários, estética dental e ortodontia moderna. Seu compromisso é oferecer tratamentos de qualidade com o máximo de conforto e segurança.</p>
+                    <p>Formado pela USP e com certificações internacionais, o Dr. João utiliza as tecnologias mais avançadas para garantir resultados excepcionais.</p>
+                    <div class="cro-badge">
+                        <span>🏆</span>
+                        <div>
+                            <strong>CRO-SP 12345</strong><br>
+                            Registro Profissional Verificado
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>🦷 Implantes Dentários</h3>
+                    <p>Recupere sua dentição completa com implantes de última geração. Procedimento seguro e com resultados duradouros.</p>
+                </div>
+                <div class="service-card">
+                    <h3>✨ Estética Dental</h3>
+                    <p>Clareamento, facetas e restaurações estéticas para o sorriso que você sempre desejou.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🔧 Ortodontia</h3>
+                    <p>Alinhamento de dentes com aparelhos convencionais ou invisíveis (Invisalign).</p>
+                </div>
+                <div class="service-card">
+                    <h3>🛡️ Limpeza e Prevenção</h3>
+                    <p>Procedimentos de higiene e prevenção para manter sua saúde bucal em dia.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🪥 Tratamento de Cáries</h3>
+                    <p>Tratamentos rápidos e indolores com técnicas modernas.</p>
+                </div>
+                <div class="service-card">
+                    <h3>😁 Prótese Dentária</h3>
+                    <p>Próteses fixas e removíveis com conforto e estética.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <h2>O que nossos pacientes dizem</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <div class="testimonial-text">"Melhor decisão que tomei! O Dr. João é excelente, muito atencioso e profissional. Meu sorriso mudou completamente!"</div>
+                    <div class="testimonial-author">- Maria Silva</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <div class="testimonial-text">"Procedimento rápido, sem dor e resultado perfeito. Recomendo muito o Dr. João para todos os meus amigos!"</div>
+                    <div class="testimonial-author">- Carlos Santos</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <div class="testimonial-text">"Clínica moderna, equipe atenciosa e o Dr. João é um profissional exemplar. Voltaria com os olhos fechados!"</div>
+                    <div class="testimonial-author">- Ana Costa</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <div class="testimonial-text">"Tinha muito medo de dentista, mas o Dr. João me deixou totalmente à vontade. Muito obrigado!"</div>
+                    <div class="testimonial-author">- João Oliveira</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2>Perguntas Frequentes</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>O procedimento dói?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Não! Utilizamos anestesia local e técnicas modernas para garantir conforto total durante o procedimento. Você pode estar tranquilo.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Quanto tempo leva um implante?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        O procedimento cirúrgico leva entre 30 a 60 minutos. O tempo total de tratamento (desde a avaliação até a prótese final) é de 3 a 6 meses.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Vocês aceitam convênio?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sim! Trabalhamos com os principais convênios odontológicos. Consulte-nos para verificar sua cobertura específica.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Qual é o valor do clareamento?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        O valor varia conforme o tipo de clareamento (em consultório ou caseiro). Entre em contato para uma avaliação e orçamento personalizado.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Como agendar uma consulta?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Você pode agendar pelo WhatsApp clicando no botão "Agendar" ou ligando para (11) 4004-1234. Estamos disponíveis de segunda a sexta!
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Qual é o horário de atendimento?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Atendemos de segunda a sexta-feira, de 8h às 18h. Aos sábados, de 9h às 13h. Agende sua consulta!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <form class="contact-form" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Assunto</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>OdontoHelts</h4>
+                    <p>Clínica odontológica especializada em implantes e estética dental.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li>📞 (11) 4004-1234</li>
+                        <li>📱 (11) 98765-4321</li>
+                        <li>📧 contato@odontohelts.com.br</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Endereço</h4>
+                    <ul>
+                        <li>Av. Paulista, 1000</li>
+                        <li>São Paulo - SP</li>
+                        <li>CEP: 01311-100</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Horários</h4>
+                    <ul>
+                        <li>Seg-Sex: 8h às 18h</li>
+                        <li>Sábado: 9h às 13h</li>
+                        <li>Domingo: Fechado</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="cro-footer">
+                    <span>🏆</span>
+                    <span>CRO-SP 12345 | Registro Profissional Verificado</span>
+                </div>
+                <p style="margin-top: 1rem;">&copy; 2026 OdontoHelts. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5511987654321" class="whatsapp-btn" title="Fale conosco no WhatsApp">💬</a>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('span:last-child');
+            
+            answer.classList.toggle('active');
+            icon.textContent = answer.classList.contains('active') ? '−' : '+';
+        }
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Send via Formspree
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('phone', phone);
+            formData.append('subject', subject);
+            formData.append('message', message);
+            
+            fetch('https://formspree.io/f/xyzgvwpj', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                    document.querySelector('.contact-form').reset();
+                } else {
+                    alert('Erro ao enviar mensagem. Tente novamente.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao enviar mensagem. Tente novamente.');
+            });
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
